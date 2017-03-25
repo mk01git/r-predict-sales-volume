@@ -52,8 +52,7 @@ testset <- existing.data[indices==2,]
 
 # 8. Create Model Section -----------------------------------------------------
 # IBk - model
-?IBk
-model <- IBk(existing.data$Volume ~ . , data = existing.data, control = Weka_control(K = 2, X = TRUE))
+model <- IBk(trainset$Volume ~ . , data = trainset, control = Weka_control(K = 2))
 evaluate_Weka_classifier(model, numFolds = 10)
 model
 
