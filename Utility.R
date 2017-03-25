@@ -19,46 +19,45 @@ renamecolumnsuserfriendly <- function(df){
 }
 
 
-understandDataFrame <- function(){
+understandDataFrame <- function(df){
   #display data frame 
-  head(new.data)
-  head(existing.data)
-  
+  head(df)
+    
   #display names for the columns available in dataset
-  names(new.data)
-  colnames(new.data)
+  names(df)
+  colnames(df)
   
   #Display number of columns
-  ncol(existing.data)
+  ncol(df)
   
   #Rows in the dataset
-  nrow(new.data)
-  nrow(existing.data)
-  
+  nrow(df)
+    
   #count missing values in the dataset
-  sum(is.na(new.data))
+  sum(is.na(df))
   
   #exclude the missing values rows 
-  na.omit(new.data)
+  na.omit(df)
   
   #display each column data summary, such as Min, Max, Mean, Median, 1st Qu, 3rd QU..
-  summary(new.data)
+  summary(df)
   
   #display number of rows and columns
-  dim(new.data)
+  dim(df)
   #display first two rows from the dataset
-  head(new.data, n = 2)
+  head(df, n = 2)
   
   #display last two frows from the dataset
-  tail(new.data, n = 2)
+  tail(df, n = 2)
   
   #display internal structure of the dataset
-  str(existing.data)
+  str(df)
   
   #display mean value for the Volumn column
-  mean(existing.data$Volume)
+  mean(df$Volume)
   
   #display type of the column
-  class(existing.data$Volume)
-
+  class(df$Volume)
+  
+  return(df)
 }
