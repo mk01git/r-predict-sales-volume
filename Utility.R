@@ -20,7 +20,7 @@ renamecolumnsuserfriendly <- function(df){
 
 
 understandDataFrame <- function(df){
-  #display data frame 
+  print("display data frame")
   head(df)
     
   #display names for the columns available in dataset
@@ -52,12 +52,5 @@ understandDataFrame <- function(df){
   
   #display internal structure of the dataset
   str(df)
-  
-  #display mean value for the Volumn column
-  mean(df$Volume)
-  
-  #display type of the column
-  class(df$Volume)
-  
-  return(df)
+  print("Successfully displayed internal structure of the dataset")
 }
