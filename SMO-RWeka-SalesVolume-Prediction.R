@@ -23,8 +23,8 @@ existing.data <- renamecolumnsuserfriendly(existing.data)
 #Preprocess the existing.data
 existing.data$"Product.Type" <- NULL
 existing.data$"Best.Sellers.Rank" <- NULL
-#existing.data$"Five.Star.Reviews" <- NULL
-#existing.data$"Four.Star.Reviews." <- NULL
+existing.data$"Five.Star.Reviews" <- NULL
+existing.data$"Four.Star.Reviews." <- NULL
 existing.data$"Product.Width" <- NULL
 existing.data$"Product.Height" <- NULL
 existing.data$"Product.Depth" <- NULL
@@ -33,8 +33,8 @@ existing.data$"Would.consumer.recommend.product" <- NULL
 #Preprocess the new.data
 new.data$"Product.Type" <- NULL
 new.data$"Best.Sellers.Rank" <- NULL
-#new.data$"Five.Star.Reviews" <- NULL
-#new.data$"Four.Star.Reviews." <- NULL
+new.data$"Five.Star.Reviews" <- NULL
+new.data$"Four.Star.Reviews." <- NULL
 new.data$"Product.Width" <- NULL
 new.data$"Product.Height" <- NULL
 new.data$"Product.Depth" <- NULL
@@ -52,14 +52,14 @@ library("RWeka")
 
 # 7. Create Training and Test Set Section -----------------------------------------------------
 # Split dataset into 70% for training and remaining 30% for testing.
-indices <- sample(2, nrow(existing.data), replace = TRUE, prob = c(0.75, 0.25))
+indices <- sample(2, nrow(existing.data), replace = TRUE, prob = c(0.70, 0.30))
 trainset <- existing.data[indices==1,]
 testset <- existing.data[indices==2,]
 
 # 8. Create Model Section -----------------------------------------------------
 #SMO - model
-existing.data$Volume <- as.factor(existing.data$Volume)
-model <- SMO(existing.data$Volume ~ . , existing.data, control = Weka_control(K = list("RBFKernel", G = 0.5)))
+trainset$Volume <- as.factor(trainset$Volume)
+model <- SMO(trainset$Volume ~ . , trainset, control = Weka_control(K = list("RBFKernel", G = 0.5)))
 model
 
 #TestSet predictions
