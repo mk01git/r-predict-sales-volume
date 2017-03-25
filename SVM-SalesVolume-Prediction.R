@@ -54,7 +54,7 @@ testset <- existing.data[indices==2,]
 # 8. Create Model Section -----------------------------------------------------
 #SVM - Model
 ?svm
-model <- svm(existing.data$Volume ~ . , existing.data, kernel="polynomial", cost=4, nu=0.10, gamma=10, type='nu-classification', probability=TRUE)
+model <- svm(trainset$Volume ~ . , trainset, kernel="polynomial", cost=4, nu=0.10, gamma=10, type='nu-classification', probability=TRUE)
 summary(model)
 
 #TestSet predictions
